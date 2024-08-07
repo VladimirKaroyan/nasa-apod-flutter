@@ -14,8 +14,7 @@ jobs:
         shell: bash
         env:
           CONFIG_FILE_CONTENT: ${{ secrets.CONFIG_FILE_CONTENT }}
-        run: |
-          echo ${{ secrets.CONFIG_FILE_CONTENT }} > lib/config.dart
+        run: echo $CONFIG_FILE_CONTENT | base64 -d > lib/config.dart
       - uses: subosito/flutter-action@v2.16.0
       - uses: bluefireteam/flutter-gh-pages@v8
         with:
