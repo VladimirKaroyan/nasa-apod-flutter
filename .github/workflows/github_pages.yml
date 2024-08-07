@@ -11,13 +11,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2.16.0
-      - name: Create .env file
-        run: |
-          touch assets/.env && cat > assets/.env <<EOF
-          NASA_API_KEY=${{ secrets.NASA_API_KEY }}
-          NASA_API_URL=${{ secrets.NASA_API_URL }}
-          EOF
       - uses: bluefireteam/flutter-gh-pages@v8
         with:
           baseHref: /nasa-apod/
-          webRenderer: html
+          webRenderer: HTML
+      - name: Create .env file
+        shell: bash
+        env:
+          NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
+          NASA_API_URL: ${{ secrets.NASA_API_URL }}
+        run: |
+          touch .env
+          echo NASA_API_KEY=${{ secrets.NASA_API_KEY }} > .env
+          echo NASA_API_URL=${{ secrets.NASA_API_URL }} > .env
+          cat .env
