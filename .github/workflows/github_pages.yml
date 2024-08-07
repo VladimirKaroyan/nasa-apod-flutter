@@ -11,10 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2.16.0
-      - uses: bluefireteam/flutter-gh-pages@v8
-        with:
-          baseHref: /nasa-apod/
-          webRenderer: html
       - name: Create .env file
         shell: bash
         env:
@@ -25,3 +21,7 @@ jobs:
           echo NASA_API_KEY=${{ secrets.NASA_API_KEY }} > .env
           echo NASA_API_URL=${{ secrets.NASA_API_URL }} > .env
           cat .env
+      - uses: bluefireteam/flutter-gh-pages@v8
+        with:
+          baseHref: /nasa-apod/
+          webRenderer: html
