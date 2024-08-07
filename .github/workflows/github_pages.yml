@@ -10,10 +10,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Create.env
+        shell: bash
+        env:
+          CONFIG_FILE_CONTENT: ${{ secrets.CONFIG_FILE_CONTENT }}
+        run: |
+          echo {{ secrets.CONFIG_FILE_CONTENT }} > lib/config.dart
       - uses: subosito/flutter-action@v2.16.0
-      - uses: oNaiPs/secrets-to-env-action@v1
-        with:
-          secrets: ${{ toJSON(secrets) }}
       - uses: bluefireteam/flutter-gh-pages@v8
         with:
           baseHref: /nasa-apod/
