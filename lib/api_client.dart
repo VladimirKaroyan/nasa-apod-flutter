@@ -1,8 +1,11 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
-const String apiKey = '5b6eYRGoaYyemd8BSB4b7XeljKcgTVzLmEAPeOAF';
-const String apiUrl = 'https://api.nasa.gov/planetary/apod?api_key=$apiKey';
+import 'config.dart' show config;
+
+String apiKey = config['NASA_API_KEY'] ?? '';
+String apiUrl = '${config['NASA_API_URL']}?api_key=$apiKey';
 
 Future<Map<String, dynamic>> fetchApod({http.Client? client}) async {
   try {
