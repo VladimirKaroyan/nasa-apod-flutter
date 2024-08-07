@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 import 'config.dart' show config;
 
-String apiKey = config['NASA_API_KEY'] ?? '';
+String apiKey = config['NASA_API_KEY']!;
 String apiUrl = '${config['NASA_API_URL']}?api_key=$apiKey';
 
 Future<Map<String, dynamic>> fetchApod({http.Client? client}) async {
