@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Create .env file
         run: |
-          cat > assets/.env <<EOF
+          touch assets/.env && cat > assets/.env <<EOF
           NASA_API_KEY=${{ secrets.NASA_API_KEY }}
           NASA_API_URL=${{ secrets.NASA_API_URL }}
           EOF
