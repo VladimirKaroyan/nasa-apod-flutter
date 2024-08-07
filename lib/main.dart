@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'apod_image_screen.dart';
 
-Future main() async {
-  await dotenv.load(
-    fileName: ".env",
-  );
-
+void main() {
   runApp(const MyApp());
 }
 
